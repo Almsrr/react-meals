@@ -3,22 +3,23 @@ import "./App.css";
 import Header from "./components/Layout/Header/Header";
 import Meals from "./components/Meals/Meals";
 import Cart from "./components/Cart/Cart";
+import CartProvider from "./store/CartProvider";
 
 function App() {
   const [showCart, setShowCart] = useState(false);
 
-  const cartHandler = () => {
+  const cartVisibilityHandler = () => {
     setShowCart((prevState) => !prevState);
   };
 
   return (
-    <Fragment>
-      <Header onShowCart={cartHandler} />
-      {showCart && <Cart onCloseCart={cartHandler} />}
+    <CartProvider>
+      <Header onShowCart={cartVisibilityHandler} />
+      {showCart && <Cart onCloseCart={cartVisibilityHandler} />}
       <main>
         <Meals />
       </main>
-    </Fragment>
+    </CartProvider>
   );
 }
 
