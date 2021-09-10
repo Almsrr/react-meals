@@ -6,7 +6,7 @@ import styles from "./Modal.module.css";
 const Modal = (props) => {
   const innerModal = (
     <Fragment>
-      <div className={styles.backdrop}></div>
+      <div className={styles.backdrop} onClick={props.onClick}></div>
       <div className={styles.modal}>
         <div className={styles.content}>{props.children}</div>
       </div>
