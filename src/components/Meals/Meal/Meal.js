@@ -3,7 +3,6 @@ import React, { useContext } from "react";
 import styles from "./Meal.module.css";
 import MealForm from "./MealForm/MealForm";
 import CartContext from "../../../store/cart-context";
-import { v4 as uuidv4 } from "uuid";
 
 const Meal = (props) => {
   const cartCtx = useContext(CartContext);
@@ -13,13 +12,13 @@ const Meal = (props) => {
   };
 
   const addCartItemHandler = (amount) => {
-    const newItem = {
-      id: uuidv4(),
+    const newCartItem = {
+      id: props.meal.id,
       name: props.meal.name,
       amount: amount,
       price: props.meal.price,
     };
-    cartCtx.addItem(newItem);
+    cartCtx.addItem(newCartItem);
   };
   return (
     <li className={styles.meal}>

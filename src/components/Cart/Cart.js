@@ -4,6 +4,7 @@ import Modal from "../UI/Modal/Modal";
 import styles from "./Cart.module.css";
 import CartContext from "../../store/cart-context";
 import CartItem from "./CartItem/CartItem";
+import { v4 as uuidv4 } from "uuid";
 
 const Cart = (props) => {
   const cartCtx = useContext(CartContext);
@@ -20,7 +21,7 @@ const Cart = (props) => {
       <ul className={styles.cartItems}>
         {cartCtx.items.map((item) => (
           <CartItem
-            key={item.id}
+            key={uuidv4()}
             name={item.name}
             amount={item.amount}
             price={item.price}

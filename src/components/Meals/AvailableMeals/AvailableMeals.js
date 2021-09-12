@@ -3,6 +3,7 @@ import React from "react";
 import Meal from "../Meal/Meal";
 import Card from "../../UI/Card/Card";
 import styles from "./AvailableMeals.module.css";
+import { v4 as uuidv4 } from "uuid";
 
 const DUMMY_MEALS = [
   {
@@ -33,7 +34,7 @@ const DUMMY_MEALS = [
 
 const AvailableMeals = () => {
   const mealItems = DUMMY_MEALS.map((meal) => (
-    <Meal key={meal.id} meal={meal} />
+    <Meal key={uuidv4()} meal={meal} />
   ));
 
   return (
