@@ -11,6 +11,18 @@
   padding: 0;
 }
 
+.loadingSection p {
+  text-align: center;
+  font-size: 1.25rem;
+  padding: 2rem;
+}
+
+.errorSection p {
+  text-align: center;
+  font-size: 1.25rem;
+  padding: 2rem;
+}
+
 @keyframes meals-appear {
   from {
     opacity: 0;
