@@ -60,6 +60,11 @@ function Checkout(props) {
 
   const submitHandler = (event) => {
     event.preventDefault();
+    blurNameInputHandler();
+    blurEmailInputHandler();
+    blurPostalCodeInputHandler();
+    blurStreetInputHandler();
+    blurCityInputHandler();
 
     if (invalidForm) {
       return;
@@ -163,7 +168,7 @@ function Checkout(props) {
         <button type="button" onClick={props.onCancel}>
           Cancel
         </button>
-        <button type="submit" className={styles.submit} disabled={invalidForm}>
+        <button type="submit" className={styles.submit}>
           Confirm
         </button>
       </div>
