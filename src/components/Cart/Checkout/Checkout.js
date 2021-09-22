@@ -15,14 +15,14 @@ function Checkout(props) {
     resetInput: resetNameInput,
   } = useInput(isEmpty);
 
-  const {
-    value: email,
-    invalidValue: invalidEmail,
-    invalidInput: invalidEmailInput,
-    changeInputHandler: changeEmailInputHandler,
-    blurInputHandler: blurEmailInputHandler,
-    resetInput: resetEmailInput,
-  } = useInput(invalidEmailFormat);
+  // const {
+  //   value: email,
+  //   invalidValue: invalidEmail,
+  //   invalidInput: invalidEmailInput,
+  //   changeInputHandler: changeEmailInputHandler,
+  //   blurInputHandler: blurEmailInputHandler,
+  //   resetInput: resetEmailInput,
+  // } = useInput(invalidEmailFormat);
 
   const {
     value: postalCode,
@@ -52,16 +52,12 @@ function Checkout(props) {
   } = useInput(isEmpty);
 
   const invalidForm =
-    invalidName ||
-    invalidEmail ||
-    invalidPostalCode ||
-    invalidStreet ||
-    invalidCity;
+    invalidName || invalidPostalCode || invalidStreet || invalidCity;
 
   const submitHandler = (event) => {
     event.preventDefault();
     blurNameInputHandler();
-    blurEmailInputHandler();
+    // blurEmailInputHandler();
     blurPostalCodeInputHandler();
     blurStreetInputHandler();
     blurCityInputHandler();
@@ -71,13 +67,13 @@ function Checkout(props) {
     }
     props.onConfirm({
       name,
-      email,
+      // email,
       postalCode,
       street,
       city,
     });
     resetNameInput();
-    resetEmailInput();
+    // resetEmailInput();
     resetPostalCodeInput();
     resetStreetInput();
     resetCityInput();
@@ -86,9 +82,9 @@ function Checkout(props) {
   const nameClasses = invalidNameInput
     ? `${styles.control} ${styles.invalid}`
     : `${styles.control}`;
-  const emailClasses = invalidEmailInput
-    ? `${styles.control} ${styles.invalid}`
-    : `${styles.control}`;
+  // const emailClasses = invalidEmailInput
+  //   ? `${styles.control} ${styles.invalid}`
+  //   : `${styles.control}`;
   const postalCodeClasses = invalidPostalCodeInput
     ? `${styles.control} ${styles.invalid}`
     : `${styles.control}`;
@@ -114,7 +110,7 @@ function Checkout(props) {
           <p className={styles.errorText}>Name must be not empty</p>
         )}
       </div>
-      <div className={emailClasses}>
+      {/* <div className={emailClasses}>
         <label id="email">Email</label>
         <input
           type="email"
@@ -124,7 +120,7 @@ function Checkout(props) {
           onBlur={blurEmailInputHandler}
         />
         {invalidEmailInput && <p className={styles.errorText}>Invalid email</p>}
-      </div>
+      </div> */}
       <div className={postalCodeClasses}>
         <label id="postal">Postal Code</label>
         <input

@@ -30,10 +30,8 @@ const HeaderCartButton = (props) => {
   const btnClasses = `${styles.button} ${highlightBtn ? styles.bump : " "}`;
   return (
     <button className={btnClasses} onClick={props.onClick}>
-      <span className={styles.icon}>
-        <CartIcon />
-      </span>
-      <span>Your cart</span>
+      <i className={`fas fa-shopping-cart ${styles.icon}`}></i>
+      <span>Cart</span>
       <span className={styles.badge}>{numberOfCartItems}</span>
     </button>
   );
