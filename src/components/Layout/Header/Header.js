@@ -5,7 +5,7 @@ import styles from "./Header.module.css";
 const Header = (props) => {
   return (
     <header>
-      <nav className="navbar navbar-expand-md fixed-top">
+      <nav className={`navbar navbar-expand-md ${styles.fixed}`}>
         <div className="container">
           <span className={styles.navbarTitle}>React Meals</span>
           <HeaderCartButton onClick={props.onShowCart} />
