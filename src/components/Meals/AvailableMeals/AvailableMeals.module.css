@@ -1,5 +1,5 @@
 .meals {
-  max-width: 60rem;
+  max-width: 45rem;
   width: 90%;
   margin: 2rem auto;
   animation: meals-appear 1s ease-out forwards;
@@ -9,6 +9,18 @@
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.loadingSection p {
+  text-align: center;
+  font-size: 1.25rem;
+  padding: 2rem;
+}
+
+.errorSection p {
+  text-align: center;
+  font-size: 1.25rem;
+  padding: 2rem;
 }
 
 @keyframes meals-appear {
