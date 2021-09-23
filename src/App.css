@@ -1,11 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Cantata+One&family=Source+Sans+Pro:wght@300;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cantata+One&family=Oxygen:wght@300;400;700&display=swap");
 
 body {
-  font-family: "Source Sans Pro", sans-serif;
-}
-
-main {
-  background-color: #fcf0c8;
+  background-color: #fcf0c8 !important;
+  font-family: "Oxygen", sans-serif !important;
 }
 
 h1,
