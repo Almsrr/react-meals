@@ -1,11 +1,13 @@
 .form {
   margin: 1rem 0;
-  height: 19rem;
+  height: max-content;
   overflow: auto;
 }
 
 .control {
   margin-bottom: 0.5rem;
+  display: flex;
+  align-items: flex-end;
 }
 
 .control label {
@@ -65,4 +67,6 @@
 
 .errorText {
   color: #ca3e51;
+  font-size: 0.75rem;
+  margin: 0 0 0 1rem;
 }

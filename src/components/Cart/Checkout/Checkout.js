@@ -2,8 +2,8 @@ import useInput from "../../../hooks/use-input";
 import styles from "./Checkout.module.css";
 
 const isEmpty = (str) => str.trim() === "";
-const invalidPostalCodeFormat = (str) => str.trim().length < 5;
-const invalidEmailFormat = (email) => !email.includes("@");
+// const invalidPostalCodeFormat = (str) => str.trim().length < 5;
+// const invalidEmailFormat = (email) => !email.includes("@");
 
 function Checkout(props) {
   const {
@@ -24,14 +24,14 @@ function Checkout(props) {
   //   resetInput: resetEmailInput,
   // } = useInput(invalidEmailFormat);
 
-  const {
-    value: postalCode,
-    invalidValue: invalidPostalCode,
-    invalidInput: invalidPostalCodeInput,
-    changeInputHandler: changePostalCodeInputHandler,
-    blurInputHandler: blurPostalCodeInputHandler,
-    resetInput: resetPostalCodeInput,
-  } = useInput(invalidPostalCodeFormat);
+  // const {
+  //   value: postalCode,
+  //   invalidValue: invalidPostalCode,
+  //   invalidInput: invalidPostalCodeInput,
+  //   changeInputHandler: changePostalCodeInputHandler,
+  //   blurInputHandler: blurPostalCodeInputHandler,
+  //   resetInput: resetPostalCodeInput,
+  // } = useInput(invalidPostalCodeFormat);
 
   const {
     value: street,
@@ -51,14 +51,13 @@ function Checkout(props) {
     resetInput: resetCityInput,
   } = useInput(isEmpty);
 
-  const invalidForm =
-    invalidName || invalidPostalCode || invalidStreet || invalidCity;
+  const invalidForm = invalidName || invalidStreet || invalidCity;
 
   const submitHandler = (event) => {
     event.preventDefault();
     blurNameInputHandler();
     // blurEmailInputHandler();
-    blurPostalCodeInputHandler();
+    // blurPostalCodeInputHandler();
     blurStreetInputHandler();
     blurCityInputHandler();
 
@@ -68,13 +67,13 @@ function Checkout(props) {
     props.onConfirm({
       name,
       // email,
-      postalCode,
+      // postalCode,
       street,
       city,
     });
     resetNameInput();
     // resetEmailInput();
-    resetPostalCodeInput();
+    // resetPostalCodeInput();
     resetStreetInput();
     resetCityInput();
   };
@@ -85,9 +84,9 @@ function Checkout(props) {
   // const emailClasses = invalidEmailInput
   //   ? `${styles.control} ${styles.invalid}`
   //   : `${styles.control}`;
-  const postalCodeClasses = invalidPostalCodeInput
-    ? `${styles.control} ${styles.invalid}`
-    : `${styles.control}`;
+  // const postalCodeClasses = invalidPostalCodeInput
+  //   ? `${styles.control} ${styles.invalid}`
+  //   : `${styles.control}`;
   const streetClasses = invalidStreetInput
     ? `${styles.control} ${styles.invalid}`
     : `${styles.control}`;
@@ -98,14 +97,16 @@ function Checkout(props) {
   return (
     <form className={styles.form} onSubmit={submitHandler}>
       <div className={nameClasses}>
-        <label id="name">Name</label>
-        <input
-          type="text"
-          id="name"
-          value={name}
-          onChange={changeNameInputHandler}
-          onBlur={blurNameInputHandler}
-        />
+        <div>
+          <label id="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            value={name}
+            onChange={changeNameInputHandler}
+            onBlur={blurNameInputHandler}
+          />
+        </div>
         {invalidNameInput && (
           <p className={styles.errorText}>Name must be not empty</p>
         )}
@@ -121,7 +122,7 @@ function Checkout(props) {
         />
         {invalidEmailInput && <p className={styles.errorText}>Invalid email</p>}
       </div> */}
-      <div className={postalCodeClasses}>
+      {/* <div className={postalCodeClasses}>
         <label id="postal">Postal Code</label>
         <input
           type="text"
@@ -133,29 +134,33 @@ function Checkout(props) {
         {invalidPostalCodeInput && (
           <p className={styles.errorText}>Five characters required</p>
         )}
-      </div>
+      </div> */}
       <div className={streetClasses}>
-        <label id="street">Street</label>
-        <input
-          type="text"
-          id="street"
-          value={street}
-          onChange={changeStreetInputHandler}
-          onBlur={blurStreetInputHandler}
-        />
+        <div>
+          <label id="street">Street</label>
+          <input
+            type="text"
+            id="street"
+            value={street}
+            onChange={changeStreetInputHandler}
+            onBlur={blurStreetInputHandler}
+          />
+        </div>
         {invalidStreetInput && (
           <p className={styles.errorText}>Street must be not empty</p>
         )}
       </div>
       <div className={cityClasses}>
-        <label id="city">City</label>
-        <input
-          type="text"
-          id="city"
-          value={city}
-          onChange={changeCityInputHandler}
-          onBlur={blurCityInputHandler}
-        />
+        <div>
+          <label id="city">City</label>
+          <input
+            type="text"
+            id="city"
+            value={city}
+            onChange={changeCityInputHandler}
+            onBlur={blurCityInputHandler}
+          />
+        </div>
         {invalidCityInput && (
           <p className={styles.errorText}>City must be not empty</p>
         )}
