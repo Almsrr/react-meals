@@ -96,7 +96,7 @@ function Checkout(props) {
     : `${styles.control}`;
 
   return (
-    <form onSubmit={submitHandler}>
+    <form className={styles.form} onSubmit={submitHandler}>
       <div className={nameClasses}>
         <label id="name">Name</label>
         <input
