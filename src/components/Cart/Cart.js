@@ -94,7 +94,7 @@ const Cart = (props) => {
 
   const didSubmitContent = (
     <React.Fragment>
-      <p>Order complete successfully</p>
+      <p>Order completed successfully</p>
       <div className={styles.actions}>
         <button className={styles.button} onClick={props.onCloseCart}>
           Close
