@@ -1,3 +1,26 @@
+# React Meals
+
+> Ordering web app
+
+## Table of Contents
+
+- [Technologies Used](#technologies-used)
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Setup](#setup)
+- [Contact](#contact)
+
+## Technologies Used
+
+- React - version 17.0.2
+- Firebase (Realtime database)
+
+## Features
+
+- Shopping cart
+- Order form
+- Form fields validations
+
 ## Screenshots
 
 ![pic1](./pics/pic1.png)
