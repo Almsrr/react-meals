@@ -13,7 +13,7 @@
 ## Technologies Used
 
 - React - version 17.0.2
-- Firebase (Realtime database)
+- Firebase
 
 ## Features
 

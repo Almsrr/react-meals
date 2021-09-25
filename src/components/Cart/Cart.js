@@ -5,6 +5,8 @@ import styles from "./Cart.module.css";
 import CartContext from "../../store/cart-context";
 import CartItem from "./CartItem/CartItem";
 import Checkout from "./Checkout/Checkout";
+import db from "../../firebase/firebaseConfig";
+import { collection, addDoc } from "firebase/firestore";
 
 const Cart = (props) => {
   const cartCtx = useContext(CartContext);
@@ -30,16 +32,11 @@ const Cart = (props) => {
   const confirmOrderHandler = async (userData) => {
     setIsSubmitting(true);
     try {
-      await fetch(
-        "https://react-http-18ddb-default-rtdb.firebaseio.com/orders.json",
-        {
-          method: "POST",
-          body: JSON.stringify({
-            user: userData,
-            orderedItems: cartCtx.items,
-          }),
-        }
-      );
+      const ordersCol = collection(db, "orders");
+      await addDoc(ordersCol, {
+        user: userData,
+        orderedMeals: cartCtx.items,
+      });
     } catch (error) {
       console.log(error);
     }
