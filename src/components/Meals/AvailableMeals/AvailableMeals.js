@@ -3,6 +3,9 @@ import React, { useState, useEffect, useCallback } from "react";
 import Meal from "../Meal/Meal";
 import Card from "../../UI/Card/Card";
 import styles from "./AvailableMeals.module.css";
+import { v4 as uuid } from "uuid";
+import db from "../../../firebase/firebaseConfig";
+import { collection, getDocs } from "firebase/firestore";
 
 const AvailableMeals = () => {
   const [meals, setMeals] = useState([]);
@@ -11,23 +14,22 @@ const AvailableMeals = () => {
 
   const fetchMeals = useCallback(async () => {
     try {
-      const response = await fetch(
-        "https://react-http-18ddb-default-rtdb.firebaseio.com/meals.json"
-      );
-      if (response.ok) {
-        const data = await response.json();
-        const fetchedMeals = [];
-        for (const key in data) {
-          fetchedMeals.push({
-            id: key,
-            name: data[key].name,
-            description: data[key].description,
-            price: data[key].price,
-          });
-        }
-        setMeals(fetchedMeals);
+      const mealsCol = collection(db, "meals");
+      const data = await getDocs(mealsCol);
+
+      if (!data.empty) {
+        const fetchedMeals = data.docs.map((doc) => doc.data());
+        const mealsList = fetchedMeals.map((meal) => {
+          return {
+            id: uuid(),
+            name: meal.name,
+            description: meal.description,
+            price: meal.price,
+          };
+        });
+        setMeals(mealsList);
       } else {
-        throw new Error("Something went wrong");
+        throw new Error("Meals not found");
       }
     } catch (error) {
       setHttpError(error.message);
@@ -55,9 +57,7 @@ const AvailableMeals = () => {
     );
   }
 
-  const mealItems = meals.map((meal, index) => (
-    <Meal key={index} meal={meal} />
-  ));
+  const mealItems = meals.map((meal) => <Meal key={meal.id} meal={meal} />);
   return (
     <section className={styles.meals}>
       <Card>
